@@ -121,14 +121,15 @@ button{cursor:pointer}
 .good{--tone:var(--green)}
 .medium{--tone:var(--yellow)}
 .bad{--tone:var(--red)}
-.terminal-orb span{display:block;font-size:64px;line-height:.9;font-weight:950;letter-spacing:-.09em}
+.terminal-orb span{display:block;font-size:52px;line-height:.9;font-weight:950;letter-spacing:-.08em}
 .terminal-orb em{display:block;color:var(--muted);font-style:normal;font-weight:900}
 .form-grid{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:12px;
 }
-.form-grid label{display:flex;flex-direction:column;gap:8px;color:var(--muted);font-size:13px;font-weight:900}
+.form-grid label{position:relative;display:flex;flex-direction:column;gap:8px;color:var(--muted);font-size:13px;font-weight:900}
+.form-grid label.wide{grid-column:1/-1}
 .form-grid input,.form-grid select{
   width:100%;
   border:1px solid var(--line);
@@ -138,7 +139,36 @@ button{cursor:pointer}
   padding:13px 14px;
   outline:none;
 }
+.form-grid input:focus,.form-grid select:focus{border-color:rgba(32,170,227,.65);box-shadow:0 0 0 4px rgba(32,170,227,.10)}
 .form-grid option{background:#101827;color:white}
+.form-grid small{color:var(--muted);line-height:1.35}
+.airport-results{
+  position:absolute;
+  left:0;
+  right:0;
+  top:100%;
+  z-index:30;
+  display:grid;
+  gap:6px;
+  margin-top:6px;
+  max-height:320px;
+  overflow:auto;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:rgba(8,17,31,.98);
+  box-shadow:var(--shadow);
+}
+.airport-results:empty{display:none}
+.airport-result{
+  text-align:left;
+  border:0;
+  background:rgba(255,255,255,.05);
+  color:var(--text);
+  padding:12px 14px;
+}
+.airport-result:hover{background:rgba(32,170,227,.14)}
+.airport-result strong{display:block}
+.airport-result span{display:block;color:var(--muted);font-size:13px;margin-top:3px}
 .form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
 .cards-grid,.checklist-grid,.terminal-guide-grid,.saved-grid,.api-grid{
   display:grid;
@@ -147,6 +177,7 @@ button{cursor:pointer}
   margin:18px 0;
 }
 .checklist-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.terminal-guide-grid{grid-template-columns:1fr}
 .info-card,.check-card,.terminal-guide,.saved-trip,.api-grid article,.empty-card{
   border:1px solid color-mix(in srgb,var(--tone,var(--blue)),transparent 60%);
   border-radius:30px;
@@ -158,10 +189,11 @@ button{cursor:pointer}
 }
 .info-card strong{
   display:block;
-  font-size:48px;
+  font-size:42px;
   letter-spacing:-.07em;
   line-height:.9;
   margin:14px 0 8px;
+  overflow-wrap:anywhere;
 }
 .info-card h2,.check-card h2,.terminal-guide h2,.saved-trip h2,.api-grid h2,.guide-card h2{
   font-size:27px;
@@ -169,7 +201,7 @@ button{cursor:pointer}
   letter-spacing:-.045em;
   margin:10px 0;
 }
-.info-card p,.check-card li,.terminal-guide li,.terminal-guide p,.api-grid li,.guide-card li,.saved-trip p{
+.info-card p,.check-card li,.terminal-guide li,.terminal-guide p,.api-grid li,.guide-card p,.saved-trip p{
   color:#d8e1f1;
   line-height:1.55;
 }
@@ -184,7 +216,7 @@ button{cursor:pointer}
   background:rgba(32,170,227,.16);
   border:1px solid rgba(32,170,227,.38);
   color:#9de7ff;
-  font-size:28px;
+  font-size:24px;
 }
 .terminal-title p{margin:0;color:var(--muted)}
 .terminal-guide section{border-top:1px solid var(--line);padding-top:16px;margin-top:16px}
@@ -202,13 +234,13 @@ button{cursor:pointer}
   .topbar{align-items:flex-start;flex-direction:column}
   .nav{width:100%;justify-content:flex-start}
   .hero{grid-template-columns:1fr;min-height:auto}
-  .form-grid,.cards-grid,.checklist-grid,.terminal-guide-grid,.saved-grid,.api-grid{grid-template-columns:1fr}
+  .form-grid,.cards-grid,.checklist-grid,.saved-grid,.api-grid{grid-template-columns:1fr}
 }
 @media(max-width:560px){
   .app-shell{padding:12px}
   .hero,.page-head,.truth-card,.form-card,.guide-card{padding:22px;border-radius:28px}
-  .hero h1,.page-head h1{font-size:48px}
+  .hero h1,.page-head h1{font-size:44px}
   .hero p,.page-head p{font-size:18px}
   .terminal-orb{width:150px;height:150px;border-radius:38px}
-  .terminal-orb span{font-size:50px}
+  .terminal-orb span{font-size:40px}
 }
